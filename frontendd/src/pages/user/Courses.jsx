@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import UserLayout from "../../layouts/UserLayout";
+import UserLayout from "../../layouts/UserLayouts";
 
 import CourseCard from "../../components/course/CourseCard";
 import CourseSearch from "../../components/course/CourseSearch";

@@ -1,107 +1,87 @@
-import {
-  useState,
-} from "react";
-
-import {
-  loginUser,
-} from "../../services/authService";
-
-import {
-  useNavigate,
-} from "react-router-dom";
-
-import {
-  useAuth,
-} from "../../context/AuthContext";
+import { useState } from "react";
 
 function Login() {
-
-  const navigate =
-    useNavigate();
-
-  const { login } =
-    useAuth();
-
-  const [formData,
-    setFormData] =
-    useState({
-      email: "",
-      password: "",
-    });
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
   const handleChange = (e) => {
-
     setFormData({
       ...formData,
-      [e.target.name]:
-      e.target.value,
+      [e.target.name]: e.target.value,
     });
-
   };
 
-  const handleSubmit =
-    async (e) => {
-
-      e.preventDefault();
-
-      try {
-
-        const res =
-          await loginUser(
-            formData
-          );
-
-        login(
-          res.data.user,
-          res.data.token
-        );
-
-        navigate(
-          "/dashboard"
-        );
-
-      } catch (error) {
-
-        console.log(error);
-
-      }
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500">
 
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-xl shadow w-[400px]"
-      >
+      <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
 
-        <h1 className="text-3xl font-bold mb-6">
-          Login
-        </h1>
+        <div className="text-center mb-8">
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          className="w-full border p-3 mb-4 rounded"
-          onChange={handleChange}
-        />
+          <h1 className="text-4xl font-bold text-indigo-600">
+            LMS Portal
+          </h1>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          className="w-full border p-3 mb-4 rounded"
-          onChange={handleChange}
-        />
+          <p className="text-gray-500 mt-2">
+            Sign in to continue
+          </p>
 
-        <button
-          className="w-full bg-indigo-600 text-white py-3 rounded"
+        </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-5"
         >
-          Login
-        </button>
 
-      </form>
+          <div>
+
+            <label className="block mb-2 font-medium">
+              Email
+            </label>
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              onChange={handleChange}
+              className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+
+          </div>
+
+          <div>
+
+            <label className="block mb-2 font-medium">
+              Password
+            </label>
+
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter password"
+              onChange={handleChange}
+              className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition"
+          >
+            Login
+          </button>
+
+        </form>
+
+      </div>
 
     </div>
   );

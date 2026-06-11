@@ -1,5 +1,6 @@
-import UserLayout from "../../layouts/UserLayout";
-
+import UserLayout from "../../layouts/UserLayouts";
+import EnrollmentChart
+from "../../components/dashboard/EnrollmentChart";
 import {
   FaBook,
   FaUsers,
@@ -60,6 +61,8 @@ function Dashboard() {
             value="10"
             icon={<FaCheckCircle />}
           />
+
+          <EnrollmentChart/>
 
         </div>
 

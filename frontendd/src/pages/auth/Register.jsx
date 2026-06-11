@@ -9,9 +9,10 @@ function Register() {
   const [formData,
     setFormData] =
     useState({
-      name: "",
-      email: "",
-      password: "",
+      firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
     });
 
   const handleChange = (e) => {
@@ -60,11 +61,18 @@ function Register() {
 
         <input
           type="text"
-          name="name"
-          placeholder="Name"
+          name="firstName"
+          placeholder="firstName"
           className="w-full border p-3 mb-4 rounded"
           onChange={handleChange}
         />
+
+        <input 
+        type="text"
+        name="lastName"
+        placeholder="lastname"
+        className="w-full border p-3 mb-4 rounded"
+        onChange={handleChange}/>
 
         <input
           type="email"
